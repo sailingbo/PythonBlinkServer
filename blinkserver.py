@@ -2,7 +2,11 @@ import BaseHTTPServer
 import time
 from blink1.blink1 import Blink1
 
-b1 = Blink1()
+try:
+    b1 = Blink1()
+except:
+    print("No blink1 found")
+    sys.exit()
 
 class SimpleRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     def do_GET(self):
