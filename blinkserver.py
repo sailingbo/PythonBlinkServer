@@ -8,6 +8,10 @@ except:
     print("No blink1 found")
     sys.exit()
 
+print("blink(1) found")
+print("  serial number: " + b1.get_serial_number())
+print(" firmware version: " + b1.get_version())
+
 class SimpleRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     def do_GET(self):
         print "incoming request: " + self.path
