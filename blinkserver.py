@@ -8,12 +8,13 @@ class SimpleRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     def do_GET(self):
         print "incoming request: " + self.path
         self.wfile.write('HTTP-1.0 200 Okay\r\n\r\n' + self.path)
-		self.wfile.write('\r\n' + modes(self.path))		
+	self.wfile.write('\r\n' + modes(self.path))
 
 def run(server_class=BaseHTTPServer.HTTPServer,
     handler_class=SimpleRequestHandler):
     server_address = ('', 8080)
     httpd = server_class(server_address, handler_class)
+    print "Server started at http://localhost:8080"
     httpd.serve_forever()
 
 def doblink(mode, r, g, b):
@@ -26,7 +27,7 @@ def doblink(mode, r, g, b):
 	else:
 		print "Steady Mode"
 		b1.fade_to_rgb(100, r, g, b)
-		
+
 	return "ok"
 
 def modes(argument):
@@ -40,7 +41,8 @@ def modes(argument):
 		doblink("solid", 0, 0, 255)
 		return "ok"
 	elif argument == "/flash/red":
-		doblink("flash", 255, 0, 0)
+		#doblink("flash", 255, 0, 0)
+		b1.play_pattern('0, #FF0000,0.2,0,#000000,0.2,0')
 		return "ok"
 	elif argument == "/flash/green":
 		doblink("flash", 0, 255, 0)
@@ -52,5 +54,5 @@ def modes(argument):
 		doblink("solid", 0, 0, 0)
 	else:
 		return "invalid"
-	
+
 run()
