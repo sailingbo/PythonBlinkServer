@@ -17,13 +17,15 @@ def run(server_class=BaseHTTPServer.HTTPServer,
     httpd.serve_forever()
 
 def doblink(mode, r, g, b):
-	print "blink mode received"
+        print "blink mode received"
 	if mode == "flash":
- 		b1.fade_to_rgb(1000, 0, 0, 0)
-		time.sleep(3)
-		b1.fade_to_rgb(1000, r, g, b)
+		print "Flash Mode"
+		b1.fade_to_rgb(100, 0, 0, 0)
+		time.sleep(1)
+		b1.fade_to_rgb(100, r, g, b)
 	else:
-		b1.fade_to_rgb(1000, r, g, b)
+		print "Steady Mode"
+		b1.fade_to_rgb(100, r, g, b)
 		
 	return "ok"
 
