@@ -17,7 +17,7 @@ def run(server_class=BaseHTTPServer.HTTPServer,
     print "Server started at http://localhost:8080"
     httpd.serve_forever()
     #Enable Blink Server Tickle so if the server crashes, blink stops.
-    b1.server_tickle(enable=True, timeout_millis=2000, stay-lit=False)
+    b1.server_tickle(enable=True, timeout_millis=2000, stay_lit=False)
 
 def doblink(mode, r, g, b):
         print "blink mode received"
