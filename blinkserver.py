@@ -42,7 +42,7 @@ def modes(argument):
 		return "ok"
 	elif argument == "/flash/red":
 		#doblink("flash", 255, 0, 0)
-		b1.play_pattern('0, "red",0.3,0,"black",0.3,0')
+		b1.play_pattern('0, 'red',0.3,0,'black',0.3,0')
 		return "ok"
 	elif argument == "/flash/green":
 		doblink("flash", 0, 255, 0)
